@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<!--
+	author- Gloria Singh
+-->
+<html>
+	<head>
+		<title>CodeCanvas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+					<!-- One -->
+                    <h1>CodeCanvas</h1>
+                    <div class="imageAcad">
+                        <img src="images/canvas.png" class="imgBorder" alt=""/>
+
+                        <div class="content details">
+                           
+                            
+                            <h3>User Authentication and Account Management</h3>
+                            <p>Users are authenticated and managed efficiently, with automatic loading of account information from a predefined location. The application validates all inputs while creating and managing assignments.</p>
+                        
+                            <h3>Database and Backend Infrastructure</h2>
+                            <p>The application uses an RDS instance, launched by Pulumi and running on MariaDB, for database management. Networking resources like VPC and Internet Gateways are defined using Pulumi, which also updates Route53 records for domain linking.</p>
+                        
+                            <h3>Code Integration and Testing</h3>
+                            <p>Includes GitHub Actions workflow for application testing on each pull request, with branch protection policies to ensure code integrity. Regular health checks and integration testing are performed to maintain application reliability.</p>
+                        
+                            <h3>Cloud Infrastructure and Custom AMI</h3>
+                            <p>Custom Amazon Machine Images (AMIs) are built using Packer, containing all necessary dependencies. These are used to create virtual machines in the cloud for the application, ensuring a scalable and resilient infrastructure.</p>
+                        
+                            <h3>Security and Compliance</h3>
+                            <p>Security is a top priority, with SSL/TLS certificates implemented for secure and encrypted communication. The application conforms to HTTPS protocol standards for safe browsing.</p>
+                        
+                            <h3>Assignment Submission and Feedback</h3>
+                            <p>Assignments are stored in AWS RDS, and the system sends status updates to users upon successful submission. It also verifies the validity of submission URLs.</p>
+                        
+                            <h3>Email Services and Serverless Computing</h3>
+                            <p>Utilizes Amazon SES for email services, triggered by REST API post requests. Integrates with AWS Lambda and SNS for efficient email delivery, with all deliveries tracked in DynamoDB. This part of the application leverages serverless computing for greater efficiency.</p>
+                        
+                            <h3>Versioning and Storage</h3>
+                            <p>For version control, submission URLs are saved in Google Bucket. This allows users to submit and manage multiple versions of the same assignment.</p>
+                        </div>
+                        
+                        
+
+                <br>
+                <br>
+
+				<!-- Three -->
+				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="second">
+					<div class="content">
+						<h3>Using Node.js in the backend</h3>
+				
+                    <ul class="actions stacked">
+                        <li> The application uses Node.js that allows developers to write server-side code in JavaScript, which is a language widely used for front-end development. This uniformity can simplify development, as the same language and similar patterns can be used across the full stack.</li>
+                    </ul>
+                </div>
+
+                <div class="content">
+                <pre><code>
+function sendSnsMessage(username, submissionUrl,assignmentId, status) {
+    const snsTopicArn = process.env.snsTopicArn;
+    if (!snsTopicArn) {
+        logger.error('SNS Topic ARN is not defined in environment variables');
+        return;
+    }
+    
+    const message = {
+        user: username,
+        submissionUrl: submissionUrl,
+        assignmentId:assignmentId,
+        status: status
+    };
+    
+    const params = {
+        Message: JSON.stringify(message),
+        TopicArn: snsTopicArn
+    };
+    
+    sns.publish(params, (err, data) => {
+        if (err) {
+            logger.error('Error publishing to SNS:', err);
+        } else {
+            logger.info('Successfully published status to SNS:', data);
+        }
+    });
+}
+            </code></pre>
+            </div>
+            </section>
+
+				<!-- Four -->
+				<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+					<div class="content">
+						<h3>Using JavaScript for Pulumi</h3>
+						<ul class="actions stacked">
+							<li> The application uses JavaScript for creating and teating down the cloud Infrastructure</li>
+						</ul>
+					</div>
+                    <div class="content">
+                    <pre><code>
+const scaleUpPolicy = new aws.autoscaling.Policy("scale-up", {
+    autoscalingGroupName: autoScalingGroup.name,
+    adjustmentType: "ChangeInCapacity",
+    scalingAdjustment: 1,
+    policyType: "SimpleScaling",
+    cooldown: scaleUp['cooldown']
+});
+
+//creating alarm for scale up policy
+const scaleUpAlarm = new aws.cloudwatch.MetricAlarm("scale-up-alarm", {
+    metricName: "CPUUtilization",
+    namespace: "AWS/EC2",
+    statistic: "Average",
+    period:  scaleUp['period'],
+    evaluationPeriods:  scaleUp['evaluationPeriods'],
+    threshold:  scaleUp['threshold'],
+    comparisonOperator: "GreaterThanOrEqualToThreshold",
+    dimensions: {
+        AutoScalingGroupName: autoScalingGroup.name,
+    },
+    alarmActions: [scaleUpPolicy.arn],//scale up
+});
+                </code></pre>
+                </div>
+				</section>
+
+                <!-- Five -->
+				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="second">
+					<div class="content">
+						<h3>Using JavaScript for writing lambda functions</h3>
+						<ul class="actions stacked"> 
+							<li>The application uses JavaScript for writing serverless computing using AWS Lambda function</li>
+						</ul>
+					</div>
+                    <div class="content">
+                    <pre><code>
+const timestamp = new Date().toISOString(); // format: YYYY-MM-DDTHH:mm:ss.sssZ
+const filenameWithTimestamp = `filename-${userEmail}-${timestamp}.zip`;
+
+// Load Google Cloud credentials from environment variable
+const googleCredsBase64 = process.env.GoogleCredentials;
+const googleCredsJson = Buffer.from(googleCredsBase64, 'base64').toString('utf-8');
+logger.info(googleCredsJson);
+
+// Initialize Google Cloud Storage with credentials
+const storage = new Storage({
+    credentials: JSON.parse(googleCredsJson),
+});
+logger.info(storage);
+
+const bucketName = process.env.Google_Bucket;
+logger.info(bucketName);
+                </code></pre>
+				</div>
+                </section>
+
+                <!-- Six -->
+				<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+					<div class="content">
+						<h3>Using HashiCorp Packer for Machine Image</h3>
+						<ul class="actions stacked">
+							<li> The application uses HashiCorp Packer. Packer automates the creation of Amazon Machine Images (AMI), allowing for consistent and repeatable builds with the help of Github Actions. This automation is crucial in environments where consistency across deployments is vital.</li>
+						</ul>
+					</div>
+                    <div class="content">
+                    <pre><code>
+//build sections
+build {
+  name = "my-learn-packer"
+  sources = [
+    "source.amazon-ebs.debian", //trailing commma, makes it easier to add or remove elements from the list 
+  ]
+
+  provisioner "file" {
+    source      = "webapp.zip"
+    destination = "/home/admin/"
+  }
+
+  provisioner "file" {
+    source      = "users.csv"
+    destination = "/home/admin/"
+  }
+}
+          </code></pre>
+                </div>
+				</section>
+
+				<!-- Footer -->
+					<footer class="wrapper style1 align-center">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/gloriasingh08" class="icon brands style2 fa-github"><span class="label">Github</span></a></li>
+								<li><a href="https://www.linkedin.com/in/gloria-singh-a44a44192/" class="icon brands style2 fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<p>&copy; Gloria Singh Portfolio</p>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

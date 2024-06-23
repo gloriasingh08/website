@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<!--
+	author- Gloria Singh
+-->
+<html>
+	<head>
+		<title>On the aux</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+					<!-- One -->
+                    <section class="banner style1 orient-right content-align-left image-position-left fullscreen onload-image-fade-in onload-content-fade-left">
+                        <div class="content">
+                            <h1>On the Aux</h1>
+                            <p class="major">On the Aux is an end-to-end integrated solution that would let a user listen to songs, internet radio, and browse music events. Users also have the option to create playlists from the existing music database and delete their playlists.
+                            </p>
+                          
+                        </div>
+                        <div class="image">
+                            <img src="images/headphone.png" alt="" height="100px" width="2%"/>
+                        </div>
+                    </section>
+
+				<!-- Web Pages-->
+                <section class="wrapper style1 align-center">
+                    <div class="inner">
+                        <h2>Screenshots</h2>
+                        <p>These are some of the <strong>Snapshots</strong> of web pages for On-the-aux application</p>
+                    </div>
+
+                    <!-- Front end -->
+                        <div class="gallery style2 medium lightbox onscroll-fade-in">
+                            <article>
+                                <a href="images/gallery/fulls/landingPage.png" class="image">
+                                    <img src="images/gallery/fulls/landingPage.png" height="300px" alt=""/ >
+                                </a>
+                                <div class="caption" id="img">
+                                    <h3>Landing Page</h3>
+                                    
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/Login.png" class="image">
+                                    <img src="images/gallery/fulls/Login.png" alt="" height="300px">
+                                </a>
+                                <div class="caption">
+                                    <h3>Login Page</h3>
+                                
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/SignUp.png" class="image">
+                                    <img src="images/gallery/fulls/SignUp.png" height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>Sign Up</h3>
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/Homepage.png" class="image">
+                                    <img src="images/gallery/fulls/Homepage.png" height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>Homepage</h3>
+                                  
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/SongPage.png" class="image">
+                                    <img src="images/gallery/fulls/SongPage.png" height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>Songs Playing</h3>
+                
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/RadioPage.png" class="image">
+                                    <img src="images/gallery/fulls/RadioPage.png" height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>Internet Radio</h3>
+                                  
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/EventsPage.png" class="image">
+                                    <img src="images/gallery/fulls/EventsPage.png" height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>Events Page</h3>
+                                 
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/CreatePlaylist.png" class="image">
+                                    <img src="images/gallery/fulls/CreatePlaylist.png" height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>Creating Playlist</h3>
+                                   
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/UserPlaylist.png" class="image">
+                                    <img src="images/gallery/fulls/UserPlaylist.png" height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>User Playlist</h3>
+                                    
+                                </div>
+                            </article>
+                            <article>
+                                <a href="images/gallery/fulls/AccountSettings.png" class="image">
+                                    <img src="images/gallery/fulls/AccountSettings.png"  height="300px" alt="" />
+                                </a>
+                                <div class="caption">
+                                    <h3>Account Settings</h3>
+                                   
+                                </div>
+                            </article>          
+                        </div>
+
+                </section>
+                <br>
+                <br>
+
+				<!-- Three -->
+				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="second">
+					<div class="content">
+						<h3>Using ReactJS for front-end</h3>
+						<ul class="actions stacked"> 
+							<li> The application uses React.js class components for building interactive user interfaces and web applications quickly and efficiently with less code</li>
+						</ul>
+					</div>
+                    <div class="content">
+                    <pre><code>
+class ItemChecklist extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.myRef = React.createRef();
+            this.handleSelected = this.handleSelected.bind(this);
+        }
+    
+        handleSelected() {
+            this.myRef.current.parentNode.querySelector('input').classList.toggle('checked')
+        }
+    
+        render() {
+            const id = this.props.id;
+            const title = this.props.title;
+            return (
+                     {title}    
+            );
+        }
+    }
+    
+export default ItemChecklist;
+                </code></pre>
+				</section>
+
+				<!-- Four -->
+				<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+					<div class="content">
+						<h3>Using NodeJS for Back-end</h3>
+						<ul class="actions stacked">
+							<li> The application uses Node.js to make the application ready to handle real-time applications, API, microservices.</li>
+						</ul>
+					</div>
+                    <div class="content">
+                    <pre><code>
+import * as  musicService from './../services/music-services.js';
+import * as utils from './../helpers/utils.js';
+
+export const allMusic = async (request, response) => {
+    try{
+        const query = {};
+        const music = await musicService.getAllMusic(query);
+        utils.setSuccessResponse(music, response);
+    }catch(error) {
+        utils.setErrorResponse(error, response);
+    }
+}
+
+//user is being created here and post function starts here
+export const post = async(request, response) => {
+    try {
+        const payload = request.body;
+        const user = await userService.save(payload);
+        utils.setSuccessResponse({ message: `User successfully added` }, response);
+    } catch (error) {
+        utils.setErrorResponse(error, response);
+    }
+}
+                </code></pre>
+                </div>
+				</section>
+
+                <!-- Five -->
+				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="second">
+					<div class="content">
+						<h3>Using MongoDb as Database</h3>
+						<ul class="actions stacked"> 
+							<li> The application uses MongoDB. MongoDb is an open source NoSQL database that actually provides a lof of benefits as it provides flexible schema and supports all features of modern database</li>
+						</ul>
+					</div>
+                    <div class="content">
+                    <pre><code>
+//Defined users schema
+const Schema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: 'Name is required.'
+    },
+    email: {
+        type: String,
+        required: 'Email is required',
+        index: true,
+        unique: true
+    },
+    contactNo: {
+        type: String,
+        required: 'Phone number is requried.'
+    },
+    password: {
+        type: String,
+    },
+    playlists: [{
+        playlist_name: String,
+        playlist_details: [{
+            song_name: String,
+            song_type: String
+        }]
+    }],
+    createdDate: {
+        type: Date,
+        default: Date.now
+    },
+    modifiedDate: {
+        type: Date,
+        default: Date.now
+
+    },
+    resetPassowordToken: String,
+    resetPasswordExpired: Date
+}, { skipVersioning: true });
+                </code></pre>
+				</div>
+                </section>
+
+                	<!-- Four -->
+				<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+					<div class="content">
+						<h3>Authorization using JWT token</h3>
+						<ul class="actions stacked">
+							<li> The application uses JWT (JSON web token) for authentication and for enabling customized personal experience</li>
+						</ul>
+					</div>
+                    <div class="content">
+                    <pre><code>
+//hashing the password before sending to the database, this 'pre' is middleware and will run right 
+//before the User instance save
+
+Schema.pre('save', function() {
+    if (this.isModified('password')) {
+        this.password = hashSync(this.password, 10);
+    }
+})
+
+Schema.pre('update', function(next) {
+    if (this.getUpdate('password')) {
+        this.password = hashSync(this.password, 10);
+    }
+})
+
+//syncing the passowrd here to the actual password entered by the user during logging process
+Schema.methods.comparePasswords = function(password) {
+    return compareSync(password, this.password);
+}
+
+//creating jwt token
+Schema.methods.getSignedToken = function() {
+    return jwt.sign({
+            userId: userN._id,
+            email: userN.email
+        },
+        SESS_SECRET, {
+            expiresIn: SESS_LIFETIME
+        }
+    )
+}
+                </code></pre>
+                </div>
+				</section>
+
+        
+
+
+				<!-- Footer -->
+					<footer class="wrapper style1 align-center">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/gloriasingh08" class="icon brands style2 fa-github"><span class="label">Github</span></a></li>
+								<li><a href="https://www.linkedin.com/in/gloria-singh-a44a44192/" class="icon brands style2 fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<p>&copy; Gloria Singh Portfolio</p>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
